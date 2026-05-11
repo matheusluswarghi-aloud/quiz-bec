@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Desafio Bailarina em Casa — 7 Dias para Tirar Sua Filha do Celular</title>
+
+  <!-- =========================================================
+       META PIXEL — substituir 'SEU_PIXEL_ID_AQUI' pelo ID real
+       ========================================================= -->
+  <!--
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'SEU_PIXEL_ID_AQUI');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/></noscript>
+  -->
+
+  <style>
+    /* ============ Reset & base ============ */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{-webkit-text-size-adjust:100%}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,Oxygen,Ubuntu,sans-serif;
+      background:#ffffff;
+      color:#111827;
+      line-height:1.5;
+      min-height:100vh;
+      -webkit-font-smoothing:antialiased;
+    }
+    button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+    /* ============ Progress bar ============ */
+    .progress-container{
+      position:sticky;top:0;
+      width:100%;height:6px;
+      background:#f3f4f6;
+      z-index:100;
+    }
+    .progress-bar{
+      height:100%;
+      background:#16a34a;
+      width:0%;
+      transition:width .4s ease;
+      border-radius:0 3px 3px 0;
+    }
+
+    /* ============ Layout container ============ */
+    .container{
+      max-width:640px;
+      margin:0 auto;
+      padding:24px 20px 60px;
+    }
+
+    /* ============ Back button ============ */
+    .back-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:#6b7280;
+      font-size:14px;
+      margin-bottom:16px;
+      padding:6px 10px;
+      border-radius:6px;
+      transition:background .2s;
+    }
+    .back-btn:hover{background:#f3f4f6}
+
+    /* ============ Section transitions ============ */
+    .step{display:none;animation:fadeIn .35s ease}
+    .step.active{display:block}
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(8px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    /* ============ Typography ============ */
+    h1,h2{
+      font-weight:800;
+      color:#111827;
+      text-align:center;
+      line-height:1.25;
+    }
+    h1{font-size:24px;margin-bottom:12px}
+    h2{font-size:20px;margin-bottom:8px}
+    .sub{
+      text-align:center;
+      color:#4b5563;
+      font-size:15px;
+      margin-bottom:24px;
+    }
+    .lead{
+      font-size:16px;
+      color:#374151;
+      margin-bottom:20px;
+      line-height:1.55;
+    }
+
+    /* ============ Option buttons ============ */
+    .options{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+    .option-btn{
+      display:flex;
+      align-items:center;
+      width:100%;
+      min-height:60px;
+      padding:14px 18px;
+      background:#16a34a;
+      color:#ffffff;
+      font-size:15px;
+      font-weight:700;
+      text-align:left;
+      border-radius:12px;
+      transition:transform .15s, background .2s, box-shadow .2s;
+      box-shadow:0 1px 2px rgba(0,0,0,0.06);
+    }
+    .option-btn:hover{background:#15803d}
+    .option-btn:active{transform:scale(.98)}
+    .option-btn.selected{background:#166534;box-shadow:0 0 0 3px rgba(34,197,94,.35)}
+    .option-btn .emoji{
+      font-size:24px;
+      margin-right:14px;
+      flex-shrink:0;
+      line-height:1;
+    }
+    .option-btn .label{flex:1;line-height:1.35}
+    .option-btn .label small{
+      display:block;
+      font-weight:400;
+      font-size:13px;
+      opacity:.9;
+      margin-top:2px;
+    }
+
+    /* Subtle/outline button for secondary CTA */
+    .option-btn.ghost{
+      background:#ffffff;
+      color:#374151;
+      border:2px solid #e5e7eb;
+    }
+    .option-btn.ghost:hover{background:#f9fafb;border-color:#d1d5db}
+    .option-btn.ghost.selected{background:#f3f4f6;color:#111827}
+
+    /* ============ CTA big button ============ */
+    .cta-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      min-height:64px;
+      padding:18px 20px;
+      background:#16a34a;
+      color:#ffffff;
+      font-size:16px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.3px;
+      border-radius:12px;
+      box-shadow:0 4px 14px rgba(22,163,74,.25);
+      transition:transform .15s, background .2s;
+      margin-top:24px;
+    }
+    .cta-btn:hover{background:#15803d}
+    .cta-btn:active{transform:scale(.98)}
+    .cta-btn.secondary{
+      background:#ffffff;
+      color:#6b7280;
+      border:2px solid #e5e7eb;
+      text-transform:none;
+      font-weight:600;
+      box-shadow:none;
+      min-height:52px;
+      font-size:14px;
+      margin-top:12px;
+    }
+    .cta-btn.secondary:hover{background:#f9fafb;color:#374151}
+
+    /* ============ Cards ============ */
+    .card{
+      background:#f9fafb;
+      border:1px solid #e5e7eb;
+      border-radius:12px;
+      padding:16px 18px;
+      margin-bottom:12px;
+    }
+    .pain-card{
+      background:#fef2f2;
+      border:1px solid #fecaca;
+      border-radius:12px;
+      padding:14px 16px;
+      margin-bottom:10px;
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+    }
+    .pain-card .emoji{font-size:22px;line-height:1.2;flex-shrink:0}
+    .pain-card p{font-size:14px;color:#374151;line-height:1.45}
+    .pain-card strong{color:#991b1b}
+    .pain-card em{color:#9ca3af;font-size:12px;font-style:normal}
+
+    .benefit-card{
+      background:#f0fdf4;
+      border:1px solid #bbf7d0;
+      border-radius:10px;
+      padding:12px 16px;
+      margin-bottom:10px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:14px;
+      color:#14532d;
+    }
+    .benefit-card::before{content:"✅";font-size:18px;flex-shrink:0}
+
+    .mechanism-card{
+      background:#f9fafb;
+      border:1px solid #e5e7eb;
+      border-left:4px solid #16a34a;
+      border-radius:10px;
+      padding:16px 18px;
+      margin-bottom:14px;
+    }
+    .mechanism-card .emoji{font-size:28px;line-height:1;margin-bottom:8px;display:block}
+    .mechanism-card h3{font-size:16px;font-weight:800;color:#111827;margin-bottom:6px}
+    .mechanism-card p{font-size:14px;color:#4b5563;line-height:1.55}
+
+    /* ============ Testimonial cards (prova social) ============ */
+    .testimonial{
+      background:#ffffff;
+      border:1px solid #e5e7eb;
+      border-radius:14px;
+      padding:18px;
+      margin-bottom:18px;
+      box-shadow:0 1px 3px rgba(0,0,0,0.04);
+    }
+    .testimonial h3{font-size:16px;font-weight:800;color:#111827;margin-bottom:8px;text-align:center}
+    .testimonial p{font-size:14px;color:#4b5563;margin-bottom:6px;line-height:1.5}
+    .testimonial p strong{color:#111827}
+
+    /* ============ Media placeholders ============ */
+    .media-placeholder{
+      background:#f3f4f6;
+      border:2px dashed #d1d5db;
+      border-radius:12px;
+      padding:40px 20px;
+      text-align:center;
+      color:#6b7280;
+      font-size:13px;
+      line-height:1.5;
+      margin:16px 0;
+    }
+    .media-placeholder strong{
+      display:block;
+      color:#374151;
+      font-size:14px;
+      margin-bottom:6px;
+      letter-spacing:.5px;
+    }
+    .video-placeholder{
+      background:#111827;
+      border-radius:12px;
+      padding:60px 20px;
+      text-align:center;
+      color:#9ca3af;
+      font-size:14px;
+      margin:16px 0;
+      position:relative;
+    }
+    .video-placeholder::before{
+      content:"▶";
+      display:block;
+      font-size:48px;
+      color:#16a34a;
+      margin-bottom:12px;
+    }
+    .video-placeholder strong{
+      display:block;
+      color:#ffffff;
+      font-size:15px;
+      margin-bottom:4px;
+    }
+
+    /* ============ Offer page specifics ============ */
+    .offer-top-cards{
+      display:flex;
+      gap:10px;
+      margin:16px 0;
+    }
+    .offer-top-card{
+      flex:1;
+      background:#f0fdf4;
+      border:1px solid #86efac;
+      border-radius:12px;
+      padding:14px 12px;
+      text-align:center;
+    }
+    .offer-top-card .emoji{font-size:28px;display:block;margin-bottom:6px}
+    .offer-top-card .label{
+      font-size:11px;
+      font-weight:800;
+      color:#14532d;
+      text-transform:uppercase;
+      letter-spacing:.3px;
+      line-height:1.3;
+    }
+    .offer-top-card .value{
+      font-size:18px;
+      font-weight:800;
+      color:#16a34a;
+      margin-top:4px;
+    }
+
+    .offer-bullets{
+      background:#f9fafb;
+      border-radius:12px;
+      padding:16px 18px;
+      margin:16px 0;
+    }
+    .offer-bullets li{
+      list-style:none;
+      padding:6px 0 6px 28px;
+      position:relative;
+      font-size:14px;
+      color:#374151;
+      line-height:1.5;
+    }
+    .offer-bullets li::before{
+      content:"✓";
+      position:absolute;
+      left:6px;top:6px;
+      color:#16a34a;
+      font-weight:900;
+      font-size:16px;
+    }
+    .offer-bullets li strong{color:#111827}
+
+    .price-box{
+      text-align:center;
+      padding:18px;
+      background:#f0fdf4;
+      border:2px solid #16a34a;
+      border-radius:14px;
+      margin:20px 0 8px;
+    }
+    .price-box .anchor{
+      font-size:14px;
+      color:#9ca3af;
+      text-decoration:line-through;
+    }
+    .price-box .price{
+      font-size:42px;
+      font-weight:900;
+      color:#16a34a;
+      line-height:1.05;
+      margin:4px 0;
+    }
+    .price-box .price small{font-size:18px;font-weight:700}
+    .price-box .parcel{
+      font-size:13px;
+      color:#4b5563;
+      margin-top:4px;
+    }
+
+    /* ============ Guarantee box ============ */
+    .guarantee-box{
+      background:#fffbeb;
+      border:2px solid #fbbf24;
+      border-radius:14px;
+      padding:24px 20px;
+      text-align:center;
+      margin:20px 0;
+    }
+    .guarantee-box .badge{font-size:54px;line-height:1;margin-bottom:12px}
+    .guarantee-box h3{font-size:18px;font-weight:800;color:#92400e;margin-bottom:10px}
+    .guarantee-box p{font-size:14px;color:#78350f;line-height:1.55;margin-bottom:10px}
+    .guarantee-box .signature{
+      font-size:14px;
+      font-style:italic;
+      color:#92400e;
+      margin-top:16px;
+      font-weight:700;
+    }
+
+    /* ============ LP hero ============ */
+    .hero-h1{
+      font-size:26px;
+      font-weight:900;
+      text-align:center;
+      line-height:1.2;
+      margin:20px 0 14px;
+      color:#111827;
+    }
+    .hero-h1 .highlight{color:#16a34a}
+    .hero-sub{
+      text-align:center;
+      font-size:16px;
+      color:#4b5563;
+      line-height:1.5;
+      margin-bottom:24px;
+    }
+
+    /* ============ Helpers ============ */
+    .center{text-align:center}
+    .small-note{
+      font-size:12px;
+      color:#9ca3af;
+      text-align:center;
+      margin-top:14px;
+      line-height:1.5;
+    }
+    .divider{
+      height:1px;
+      background:#e5e7eb;
+      margin:24px 0;
+    }
+
+    /* ============ Mobile tweaks ============ */
+    @media (min-width:640px){
+      h1{font-size:28px}
+      h2{font-size:24px}
+      .hero-h1{font-size:32px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== PROGRESS BAR ===================== -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <div class="container">
+
+    <!-- ===================== STEP 1: LP ===================== -->
+    <section class="step active" id="lp" data-step="0">
+      <!-- MEDIA-PLACEHOLDER: logo opcional da Jaque/Bailarina em Casa -->
+      <div class="media-placeholder" style="padding:14px;margin:0 0 18px">
+        <strong>[PLACEHOLDER LOGO]</strong>
+        Logo Bailarina em Casa (opcional, pode remover)
+      </div>
+
+      <h1 class="hero-h1">
+        Tire sua filha do <span class="highlight">celular em 21 dias</span> com o método de balé em casa da <span class="highlight">Prof. Jaque</span>
+      </h1>
+
+      <p class="hero-sub">
+        Um desafio de <strong>7 dias</strong> pra meninas de <strong>2 a 7 anos</strong>, com aulinhas de <strong>15 minutos</strong> direto no seu WhatsApp.
+      </p>
+
+      <!-- MEDIA-PLACEHOLDER: imagem hero -->
+      <div class="media-placeholder">
+        <strong>[PLACEHOLDER HERO]</strong>
+        Imagem ou vídeo curto — Prof. Jaque com criança fazendo balé,<br>
+        OU menina dançando em casa sorrindo
+      </div>
+
+      <button class="cta-btn" onclick="goToStep('q1')">COMEÇAR O DESAFIO!</button>
+    </section>
+
+
+    <!-- ===================== STEP 2: Q1 — Idade da filha ===================== -->
+    <section class="step" id="q1" data-step="1">
+      <button class="back-btn" onclick="goBack()">← voltar</button>
+      <h2>Qual a idade da sua filha?</h2>
+      <p class="sub">Selecione uma das opções para continuar:</p>
+      <div class="options">
+        <button class="option-btn" onclick="answer('q1_idade','2-3','q2')">
+          <span class="emoji">👶</span><span class="label">2 a 3 anos</span>
+        </button>
+        <button class="option-btn" onclick="answer('q1_idade','4-5','q2')">
+          <span class="emoji">🧒</span><span class="label">4 a 5 anos</span>
+        </button>
+        <button class="option-btn" onclick="answer('q1_idade','6-7','q2')">
+          <span class="emoji">👧</span><span class="label">6 a 7 anos</span>
+        </button>
+        <button class="option-btn" onclick="answer('q1_idade','8+','q2')">
+          <span class="emoji">🙋</span><span class="label">8 anos ou mais</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ===================== STEP 3: Q2 — Perfil da filha ===================== -->
+    <section class="step" id="q2" data-step="2">
+      <button class="back-btn" onclick="goBack()">← voltar</button>
+      <h2>Como sua filha é hoje?</h2>
+      <p class="sub">Selecione a opção que mais combina com ela:</p>
+      <div class="options">
+        <button class="option-btn" onclick="answer('q2_perfil','timida','q3')">
+          <span class="emoji">🥺</span>
+          <span class="label">Tímida<small>Se esconde atrás de mim em festinhas e lugares novos</small></span>
+        </button>
+        <button class="option-btn" onclick="answer('q2_perfil','agitada','q3')">
+          <span class="emoji">🤪</span>
+          <span class="label">Agitada demais<small>Não para quieta, tem dificuldade de concentrar</small></span>
+        </button>
+        <button class="option-btn" onclick="answer('q2_perfil','quietinha','q3')">
+          <span class="emoji">😴</span>
+          <span class="label">Quietinha<small>Fica grudada no celular, fala pouco</small></span>
+        </button>
+        <button class="option-btn" onclick="answer('q2_perfil','insegura','q3')">
+          <span class="emoji">😟</span>
+          <span class="label">Insegura<small>Não se solta nas brincadeiras com outras crianças</small></span>
+        </button>
+        <button class="option-btn" onclick="answer('q2_perfil','espontanea','q3')">
+          <span class="emoji">✨</span>
+          <span class="label">Espontânea<small>Quero potencializar o que ela já tem</small></span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ===================== STEP 4: Q3 — Horas de tela ===================== -->
+    <section class="step" id="q3" data-step="3">
+      <button class="back-btn" onclick="goBack()">← voltar</button>
+      <h2>Quanto tempo ela passa no celular ou tablet por dia?</h2>
+      <p class="sub">Seja honesta — isso fica entre a gente:</p>
+      <div class="options">
+        <button class="option-btn" onclick="answer('q3_telas','<1h','q4')">
+          <span class="emoji">⏱️</span><span class="label">Menos de 1 hora por dia</span>
+        </button>
+        <button class="option-btn" onclick="answer('q3_telas','1-2h','q4')">
+          <span class="emoji">📱</span><span class="label">Entre 1 e 2 horas</span>
+        </button>
+        <button class="option-btn" onclick="answer('q3_telas','2-4h','q4')">
+          <span class="emoji">😬</span><span class="label">Entre 2 e 4 horas</span>
+        </button>
+        <button class="option-btn" onclick="answer('q3_telas','4h+','q4')">
+          <span class="emoji">😰</span><span class="label">Mais de 4 horas (sei que é muito)</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ===================== STEP 5: Q4 — Objetivo principal ===================== -->
+    <section class="step" id="q4" data-step="4">
+      <button class="back-btn" onclick="goBack()">← voltar</button>
+      <h2>O que mais te preocupa hoje?</h2>
+      <p class="sub">Escolha o que sente que é mais urgente:</p>
+      <div class="options">
+        <button class="option-btn" onclick="answer('q4_objetivo','tela','q5')">
+          <span class="emoji">📱</span><span class="label">Tirar ela do celular</span>
+        </button>
+        <button class="option-btn" onclick="answer('q4_objetivo','postura','q5')">
+          <span class="emoji">💃</span><span class="label">Postura e coordenação</span>
+        </button>
+        <button class="option-btn" onclick="answer('q4_objetivo','foco','q5')">
+          <span class="emoji">🧠</span><span class="label">Concentração na escola</span>
+        </button>
+        <button class="option-btn" onclick="answer('q4_objetivo','autoestima','q5')">
+          <span class="emoji">🤗</span><span class="label">Autoestima e sociabilidade</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ===================== STEP 6: Q5 — Micro-commit benefícios ===================== -->
+    <section class="step" id="q5" data-step="5">
+      <button class="back-btn" onclick="goBack()">← voltar</button>
+      <h2>E se eu te contar que com esse desafio você vai conquistar TODOS esses pontos?</h2>
+      <p class="sub">Veja o que mudaria na rotina da sua filha:</p>
+
+      <div class="benefit-card">Ela vai trocar 15 min de tela por aulinha de balé</div>
+      <div class="benefit-card">Postura, coordenação e equilíbrio em 2 semanas</div>
+      <div class="benefit-card">Mais concentração e atenção (a professora vai notar)</div>
+      <div class="benefit-card">Autoestima — ela vai chegar nas festinhas mais solta</div>
+
+      <p class="sub" style="margin-top:20px;font-weight:700;color:#111827;font-size:17px">É isso que você busca pra ela?</p>
+      <div class="options">
+        <button class="option-btn" onclick="answer('q5_commit','sim','q6')">
+          <span class="emoji">😍</span><span class="label">Sim! Eu quero!</span>
+        </button>
+        <button class="option-btn ghost" onclick="answer('q5_commit','duvida','q6')">
+          <span class="emoji">😔</span><span class="label">Acho que não...</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ===================== STEP 7: Q6 — PAIN (perigos das telas) ===================== -->
+    <section class="step" id="q6" data-step="6">
+      <button class="back-btn" onclick="goBack()">← voltar</button>
+      <h2 style="color:#991b1b">A geração que está sendo criada agora pode chegar na escola sem saber nem segurar um lápis.</h2>
+      <p class="sub">Veja o que o uso de tela acima de 2h por dia está fazendo com o cérebro da sua filha:</p>
+
+      <div class="pain-card">
+        <span class="emoji">😵</span>
+        <p><strong>Atraso de fala</strong> — crianças com 2h+ de tela por dia têm vocabulário até <strong>30% menor</strong> aos 5 anos.<br><em>(JAMA Pediatrics, 2023)</em></p>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">🧠</span>
+        <p><strong>Vício em dopamina</strong> — o cérebro aprende a só se animar com a tela. Depois, nem brinquedo, nem livro, nem escola conseguem competir.</p>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">💪</span>
+        <p><strong>Postura desabando aos 5 anos</strong> — pescoço travado, ombros curvados. Em alguns casos, irreversível na fase adulta.</p>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">😢</span>
+        <p><strong>Crises explosivas</strong> — toda vez que você tenta tirar o celular. Não é birra. É abstinência.</p>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">📉</span>
+        <p><strong>1 em cada 3 crianças</strong> brasileiras de 2 a 7 anos já mostra atraso motor ligado ao excesso de tela.</p>
+      </div>
+
+      <p class="sub" style="margin-top:20px;font-weight:700;color:#111827;font-size:17px">Isso te preocupa?</p>
+      <div class="options">
+        <button class="option-btn" onclick="answer('q6_pain','muito','q7')">
+          <span class="emoji">😰</span><span class="label">Muito. Quero reverter isso agora</span>
+        </button>
+        <button class="option-btn" onclick="answer('q6_pain','percebi','q7')">
+          <span class="emoji">😔</span><span class="label">Sim, eu já percebi alguns sinais</span>
+        </button>
+        <button class="option-btn" onclick="answer('q6_pain','pensando','q7')">
+          <span class="emoji">🤔</span><span class="label">Já tava pensando nisso</span>
+        </button>
+        <button class="option-btn" onclick="answer('q6_pain','novidade','q7')">
+          <span class="emoji">😬</span><span class="label">Nunca tinha pensado por esse lado</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ===================== STEP 8: Q7 — Curiosity hook ===================== -->
+    <section class="step" id="q7" data-step="7">
+      <button class="back-btn" onclick="goBack()">← voltar</button>
+      <h2>E se eu te contar que apenas <span style="color:#16a34a">15 minutos de balé por dia</span>, na sala da sua casa, reverte TODOS esses sinais?</h2>
+      <p class="sub">Sem briga, sem academia, sem rotina nova. Não é mágica — é ciência da Psicomotricidade aplicada de um jeito que toda criança ama.</p>
+
+      <!-- MEDIA-PLACEHOLDER: imagem ou GIF Jaque com criança -->
+      <div class="media-placeholder">
+        <strong>[PLACEHOLDER]</strong>
+        Imagem ou GIF curto: Prof. Jaque com uma criança<br>
+        fazendo aulinha de balé sorrindo
+      </div>
+
+      <p class="sub" style="margin-top:20px;font-weight:700;color:#111827;font-size:17px">Você quer entender como isso funciona?</p>
+      <div class="options">
+        <button class="option-btn" onclick="answer('q7_curiosity','sim','q8')">
+          <span class="emoji">😍</span><span class="label">Sim! Quero saber agora</span>
+        </button>
+        <button class="option-btn" onclick="answer('q7_curiosity','prove','q8')">
+          <span class="emoji">🤔</span><span class="label">Parece bom demais, me convença</span>
+        </button>
+        <button class="option-btn" onclick="answer('q7_curiosity','porque-bale','q8')">
+          <span class="emoji">🧐</span><span class="label">Por que justamente balé?</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ===================== STEP 9: Q8 — Mecanismo ===================== -->
+    <section class="step" id="q8" data-step="8">
+      <button class="back-btn" onclick="goBack()">← voltar</button>
+      <h2>Por que balé é o ÚNICO método que reverte o estrago da tela:</h2>
+      <p class="sub">3 razões científicas que ninguém te conta:</p>
+
+      <div class="mechanism-card">
+        <span class="emoji">🧠</span>
+        <h3>1. Remédio neurológico em 15 minutos</h3>
+        <p>Cada passo de balé conecta movimento, ritmo, atenção e memória <strong>ao mesmo tempo</strong>. Em 15 min, sua filha ativa as 4 regiões cerebrais que a tela anestesia. É o que pediatras chamam de "compensação motora".</p>
+      </div>
+
+      <div class="mechanism-card">
+        <span class="emoji">🌀</span>
+        <h3>2. Substitui dopamina viciante por saudável</h3>
+        <p>Tela libera <strong>dopamina passiva</strong> — a que vicia. Balé libera <strong>dopamina ativa</strong> — a que constrói foco e autoestima. Mesma molécula, efeitos opostos. Em 7 dias, o cérebro dela já começa a preferir a aulinha ao celular.</p>
+      </div>
+
+      <div class="mechanism-card">
+        <span class="emoji">💃</span>
+        <h3>3. Postura, coordenação e foco no mesmo exercício</h3>
+        <p>Diferente de natação, futebol ou inglês, o balé treina os 3 <strong>simultaneamente</strong>. Por isso 15 min de balé valem por 1 hora de qualquer outra atividade nessa idade.</p>
+      </div>
+
+      <div class="card" style="background:#f0fdf4;border-color:#86efac;text-align:center;font-size:14px;color:#14532d;font-weight:600;line-height:1.7">
+        ✓ Sem academia &nbsp; ✓ Sem mensalidade<br>
+        ✓ Sem você entender de dança &nbsp; ✓ A Jaque cuida de tudo
+      </div>
+
+      <button class="cta-btn" onclick="goToStep('prova')">
+        QUERO VER COMO MINHA FILHA PODE COMEÇAR HOJE →
+      </button>
+    </section>
+
+
+    <!-- ===================== STEP 10: Prova social ===================== -->
+    <section class="step" id="prova" data-step="9">
+      <button class="back-btn" onclick="goBack()">← voltar</button>
+      <h2>Veja o que aconteceu com filhas de outras mães:</h2>
+      <p class="sub">Transformações reais do método Bailarina em Casa:</p>
+
+      <div class="testimonial">
+        <!-- MEDIA-PLACEHOLDER: foto/vídeo antes-depois Helena -->
+        <div class="media-placeholder" style="margin:0 0 14px">
+          <strong>[PLACEHOLDER ANTES/DEPOIS]</strong>
+          Foto ou vídeo da Helena antes/depois<br>
+          (criança 4 anos, 8 semanas)
+        </div>
+        <h3>Helena, 4 anos</h3>
+        <p><strong>Antes:</strong> vivia no celular, tímida, não falava com adultos.</p>
+        <p><strong>Depois de 8 semanas:</strong> pede a tia Jaque, dança coreografia inteira pros avós no aniversário.</p>
+      </div>
+
+      <div class="testimonial">
+        <!-- MEDIA-PLACEHOLDER: foto/vídeo antes-depois Sofia -->
+        <div class="media-placeholder" style="margin:0 0 14px">
+          <strong>[PLACEHOLDER ANTES/DEPOIS]</strong>
+          Foto ou vídeo da Sofia antes/depois<br>
+          (criança 6 anos, 12 semanas)
+        </div>
+        <h3>Sofia, 6 anos</h3>
+        <p><strong>Antes:</strong> postura horrível, sem foco na escola, professora reclamava da letra.</p>
+        <p><strong>Depois de 12 semanas:</strong> a mesma professora elogiou a letra e a concentração nas atividades.</p>
+      </div>
+
+      <div class="testimonial">
+        <!-- MEDIA-PLACEHOLDER: foto/vídeo antes-depois Maria Clara -->
+        <div class="media-placeholder" style="margin:0 0 14px">
+          <strong>[PLACEHOLDER ANTES/DEPOIS]</strong>
+          Foto ou vídeo da Maria Clara antes/depois<br>
+          (criança 3 anos, 4 semanas)
+        </div>
+        <h3>Maria Clara, 3 anos</h3>
+        <p><strong>Antes:</strong> birra toda vez que a mãe tirava o celular.</p>
+        <p><strong>Depois de 4 semanas:</strong> pede sozinha "mãe, aulinha da tia Jaque!".</p>
+      </div>
+
+      <button class="cta-btn" onclick="goToStep('oferta')">
+        QUERO ESSE RESULTADO PRA MINHA FILHA!
+      </button>
+    </section>
+
+
+    <!-- ===================== STEP 11: Oferta ===================== -->
+    <section class="step" id="oferta" data-step="10">
+      <h2 style="color:#16a34a">Com base nas suas respostas, o Desafio Bailarina em Casa é exatamente o que sua filha precisa!</h2>
+
+      <div class="offer-top-cards">
+        <div class="offer-top-card">
+          <span class="emoji">📊</span>
+          <div class="label">Programa<br>Personalizado</div>
+          <div class="value">100%</div>
+        </div>
+        <div class="offer-top-card">
+          <span class="emoji">📱</span>
+          <div class="label">Direto no<br>WhatsApp</div>
+          <div class="value">7 dias</div>
+        </div>
+      </div>
+
+      <!-- MEDIA-PLACEHOLDER: vídeo 90s -->
+      <div class="video-placeholder">
+        <strong>[PLACEHOLDER VÍDEO 90 SEGUNDOS]</strong>
+        Prof. Jaque entrega 1 mini-aula real (40s) +<br>
+        apresenta a oferta (50s)
+      </div>
+
+      <ul class="offer-bullets">
+        <li><strong>Método testado por +X mães</strong> e filhas pelo Brasil <em>(coloque o número real)</em></li>
+        <li><strong>7 aulinhas exclusivas de 15 min</strong> — uma por dia da semana</li>
+        <li><strong>Grupo VIP no WhatsApp</strong> com a Prof. Jaque e outras mães</li>
+        <li><strong>Cronograma do desafio em PDF</strong> com o que fazer cada dia</li>
+        <li><strong>Em 7 dias</strong> sua filha já vai pedir a aulinha sozinha</li>
+      </ul>
+
+      <h2 style="margin-top:24px;font-size:18px;line-height:1.4">
+        Quer receber tudo isso<br>por apenas <span style="color:#16a34a">R$ 27</span>?
+      </h2>
+
+      <div class="price-box">
+        <div class="anchor">De R$ 47</div>
+        <div class="price"><small>R$</small> 27<small>,00</small></div>
+        <div class="parcel">ou 3x de R$ 9,57 no cartão</div>
+      </div>
+
+      <button class="cta-btn" onclick="goToCheckout()">
+        🟢 SIM! QUERO MEU DESAFIO BAILARINA EM CASA!
+      </button>
+
+      <button class="cta-btn secondary" onclick="goToStep('objecao')">
+        Não, ainda estou com dúvidas
+      </button>
+
+      <p class="small-note">
+        ✓ Pagamento seguro &nbsp; ✓ Acesso imediato no WhatsApp &nbsp; ✓ Garantia de 7 dias
+      </p>
+    </section>
+
+
+    <!-- ===================== STEP 12: Objection capture ===================== -->
+    <section class="step" id="objecao" data-step="11">
+      <button class="back-btn" onclick="goToStep('oferta')">← voltar pra oferta</button>
+      <h2>Sem problema, mãe. Me conta o que tá pegando?</h2>
+      <p class="sub">Vou te ajudar a resolver — escolha o que mais te trava:</p>
+      <div class="options">
+        <button class="option-btn" onclick="answer('q12_objecao','medo-nao-gostar','garantia')">
+          <span class="emoji">😟</span><span class="label">Tenho medo dela não gostar</span>
+        </button>
+        <button class="option-btn" onclick="answer('q12_objecao','dinheiro','garantia')">
+          <span class="emoji">💸</span><span class="label">Tô apertada financeiramente agora</span>
+        </button>
+        <button class="option-btn" onclick="answer('q12_objecao','vai-funcionar','garantia')">
+          <span class="emoji">🤔</span><span class="label">Não sei se vai funcionar pra minha filha</span>
+        </button>
+        <button class="option-btn" onclick="answer('q12_objecao','rotina','garantia')">
+          <span class="emoji">⏰</span><span class="label">Não sei se vou manter a rotina</span>
+        </button>
+        <button class="option-btn" onclick="answer('q12_objecao','outros-cursos','garantia')">
+          <span class="emoji">😬</span><span class="label">Já comprei outros cursos e não usei</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ===================== STEP 13: Garantia ===================== -->
+    <section class="step" id="garantia" data-step="12">
+      <button class="back-btn" onclick="goToStep('oferta')">← voltar pra oferta</button>
+      <h2 style="color:#92400e">Calma, mãe. Seu risco é ZERO.</h2>
+
+      <div class="guarantee-box">
+        <div class="badge">🛡️</div>
+        <h3>Garantia incondicional de 7 dias</h3>
+        <p>Você faz o desafio com sua filha durante <strong>7 dias inteiros</strong>.</p>
+        <p>Se ela <strong>não estiver pedindo a aulinha sozinha</strong> até o final da semana, eu devolvo seu dinheiro.</p>
+        <p><strong>Sem perguntas. Sem burocracia. Sem desculpa.</strong></p>
+        <div class="signature">— Prof. Jaque 💚</div>
+      </div>
+
+      <p class="lead center" style="margin-top:8px">
+        Você não tem absolutamente nada a perder.<br>
+        E sua filha tem <strong>tudo</strong> a ganhar.
+      </p>
+
+      <button class="cta-btn" onclick="goToCheckout()">
+        SIM, QUERO COMEÇAR O DESAFIO →
+      </button>
+
+      <p class="small-note">Por apenas R$ 27 — ou 3x de R$ 9,57</p>
+    </section>
+
+  </div>
+
+
+  <script>
+    /* ============ State & navigation ============ */
+
+    // ⚠️ TROCAR pelo checkout real (Lastlink, Cartpanda, Hubla, etc.)
+    const CHECKOUT_URL = 'https://checkout-aqui.com/produto';
+
+    const STEP_ORDER = [
+      'lp','q1','q2','q3','q4','q5','q6','q7','q8',
+      'prova','oferta','objecao','garantia'
+    ];
+    const TOTAL_PROGRESS_STEPS = 11; // até a oferta = 100% (objeção/garantia não avançam barra)
+
+    const history = [];
+    let state = {};
+
+    // Recupera respostas se voltar pela mesma sessão
+    try {
+      const saved = sessionStorage.getItem('quiz_state');
+      if (saved) state = JSON.parse(saved);
+    } catch (e) { state = {}; }
+
+    function saveState() {
+      try { sessionStorage.setItem('quiz_state', JSON.stringify(state)); } catch (e) {}
+    }
+
+    function getCurrentStepId() {
+      const active = document.querySelector('.step.active');
+      return active ? active.id : 'lp';
+    }
+
+    function updateProgress(stepId) {
+      const idx = STEP_ORDER.indexOf(stepId);
+      let pct;
+      if (idx <= 10) {
+        // LP até oferta: 0% → 100%
+        pct = (idx / 10) * 100;
+      } else {
+        // objeção e garantia mantêm 100%
+        pct = 100;
+      }
+      document.getElementById('progress-bar').style.width = pct + '%';
+    }
+
+    function goToStep(stepId, addToHistory) {
+      const currentId = getCurrentStepId();
+      if (addToHistory !== false && currentId !== stepId) {
+        history.push(currentId);
+      }
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(stepId);
+      if (target) target.classList.add('active');
+      updateProgress(stepId);
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function goBack() {
+      const prev = history.pop();
+      if (prev) goToStep(prev, false);
+    }
+
+    function answer(key, value, nextStepId) {
+      state[key] = value;
+      saveState();
+      goToStep(nextStepId);
+    }
+
+    function goToCheckout() {
+      state.q_final = 'comprou';
+      saveState();
+      const params = new URLSearchParams();
+      Object.keys(state).forEach(k => { if (state[k]) params.set(k, state[k]); });
+      const url = CHECKOUT_URL + (CHECKOUT_URL.includes('?') ? '&' : '?') + params.toString();
+      window.location.href = url;
+    }
+
+    // Inicializa barra de progresso
+    updateProgress('lp');
+  </script>
+
+</body>
+</html>
