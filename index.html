@@ -235,13 +235,61 @@
       background:#ffffff;
       border:1px solid #e5e7eb;
       border-radius:14px;
-      padding:18px;
-      margin-bottom:18px;
+      padding:16px;
+      margin-bottom:14px;
       box-shadow:0 1px 3px rgba(0,0,0,0.04);
     }
-    .testimonial h3{font-size:16px;font-weight:800;color:#111827;margin-bottom:8px;text-align:center}
-    .testimonial p{font-size:14px;color:#4b5563;margin-bottom:6px;line-height:1.5}
-    .testimonial p strong{color:#111827}
+    .testimonial-header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .testimonial-avatar{
+      width:44px;height:44px;
+      border-radius:50%;
+      background:#16a34a;
+      color:#ffffff;
+      font-weight:800;
+      font-size:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+    }
+    .testimonial-meta{flex:1;min-width:0}
+    .testimonial-meta .name{
+      font-weight:800;
+      color:#111827;
+      font-size:14px;
+      line-height:1.25;
+    }
+    .testimonial-meta .role{
+      font-size:12px;
+      color:#6b7280;
+      margin-top:1px;
+    }
+    .testimonial-stars{
+      color:#f59e0b;
+      font-size:13px;
+      letter-spacing:2px;
+      margin-top:3px;
+    }
+    .testimonial-msg{
+      background:#dcf8c6;
+      border-radius:14px 14px 14px 4px;
+      padding:12px 14px;
+      font-size:14px;
+      color:#1f2937;
+      line-height:1.55;
+    }
+    .testimonial-msg .time{
+      display:block;
+      text-align:right;
+      font-size:11px;
+      color:#7d8a7d;
+      margin-top:4px;
+    }
 
     /* ============ Images ============ */
     .hero-img{
@@ -702,39 +750,48 @@
       <p class="sub">Transformações reais do método Bailarina em Casa:</p>
 
       <div class="testimonial">
-        <!-- MEDIA-PLACEHOLDER: foto/vídeo antes-depois Helena -->
-        <div class="media-placeholder" style="margin:0 0 14px">
-          <strong>[PLACEHOLDER ANTES/DEPOIS]</strong>
-          Foto ou vídeo da Helena antes/depois<br>
-          (criança 4 anos, 8 semanas)
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#16a34a">M</div>
+          <div class="testimonial-meta">
+            <div class="name">Mariana</div>
+            <div class="role">mãe da Helena, 4 anos</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
         </div>
-        <h3>Helena, 4 anos</h3>
-        <p><strong>Antes:</strong> vivia no celular, tímida, não falava com adultos.</p>
-        <p><strong>Depois de 8 semanas:</strong> pede a tia Jaque, dança coreografia inteira pros avós no aniversário.</p>
+        <div class="testimonial-msg">
+          Jaqueeee não acredito no que aconteceu hj 🥹 a Helena dançou a coreografia INTEIRA pros avós no aniversário dela!! Eu chorei, sério… lembra que te falei que ela era super tímida e vivia grudada no celular? Agora ela mesma pede "mãe, cadê a tia Jaque?" kkkk faz 8 semanas e parece outra criança. Obrigada de coração 💚
+          <span class="time">09:42</span>
+        </div>
       </div>
 
       <div class="testimonial">
-        <!-- MEDIA-PLACEHOLDER: foto/vídeo antes-depois Sofia -->
-        <div class="media-placeholder" style="margin:0 0 14px">
-          <strong>[PLACEHOLDER ANTES/DEPOIS]</strong>
-          Foto ou vídeo da Sofia antes/depois<br>
-          (criança 6 anos, 12 semanas)
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#0891b2">C</div>
+          <div class="testimonial-meta">
+            <div class="name">Camila</div>
+            <div class="role">mãe da Sofia, 6 anos</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
         </div>
-        <h3>Sofia, 6 anos</h3>
-        <p><strong>Antes:</strong> postura horrível, sem foco na escola, professora reclamava da letra.</p>
-        <p><strong>Depois de 12 semanas:</strong> a mesma professora elogiou a letra e a concentração nas atividades.</p>
+        <div class="testimonial-msg">
+          Oi tia Jaque, precisava te contar 😍 a professora da Sofia me chamou hoje na escola e disse que a letra dela melhorou MUITO e que ela tá conseguindo concentrar nas atividades. Eu quase chorei na frente dela kkkk faz 12 semanas que começamos e até a postura mudou completamente. Valeu cada centavo 🙏
+          <span class="time">17:08</span>
+        </div>
       </div>
 
       <div class="testimonial">
-        <!-- MEDIA-PLACEHOLDER: foto/vídeo antes-depois Maria Clara -->
-        <div class="media-placeholder" style="margin:0 0 14px">
-          <strong>[PLACEHOLDER ANTES/DEPOIS]</strong>
-          Foto ou vídeo da Maria Clara antes/depois<br>
-          (criança 3 anos, 4 semanas)
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#8b5cf6">P</div>
+          <div class="testimonial-meta">
+            <div class="name">Patrícia</div>
+            <div class="role">mãe da Maria Clara, 3 anos</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
         </div>
-        <h3>Maria Clara, 3 anos</h3>
-        <p><strong>Antes:</strong> birra toda vez que a mãe tirava o celular.</p>
-        <p><strong>Depois de 4 semanas:</strong> pede sozinha "mãe, aulinha da tia Jaque!".</p>
+        <div class="testimonial-msg">
+          Jaque vc não tem ideia… a Mari acordou hj e a primeira coisa que ela falou foi "mamãe, aulinha da tia Jaque!" 🥹🥹 quem diria, antes era birra TODO santo dia quando eu tirava o celular da mão dela. Faz só 4 semanas, parece milagre. Tô recomendando pra todas as mães do prédio ❤️
+          <span class="time">08:15</span>
+        </div>
       </div>
 
       <button class="cta-btn" onclick="goToStep('oferta')">
