@@ -351,6 +351,114 @@
       margin-bottom:4px;
     }
 
+    /* ============ WhatsApp preview (oferta) ============ */
+    .wa-preview{
+      background:#ece5dd;
+      border-radius:14px;
+      overflow:hidden;
+      margin:16px 0;
+      box-shadow:0 2px 10px rgba(0,0,0,0.10);
+    }
+    .wa-header{
+      background:#075e54;
+      color:#ffffff;
+      padding:10px 14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .wa-avatar{
+      width:36px;height:36px;
+      border-radius:50%;
+      background:#ffffff;
+      color:#075e54;
+      font-weight:800;
+      font-size:15px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+    }
+    .wa-meta .wa-name{font-weight:700;font-size:14px;line-height:1.15}
+    .wa-meta .wa-status{font-size:11px;opacity:.85;margin-top:1px}
+    .wa-body{
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .wa-msg{
+      background:#ffffff;
+      border-radius:0 10px 10px 10px;
+      padding:8px 10px 6px;
+      font-size:13px;
+      color:#1f2937;
+      line-height:1.45;
+      max-width:88%;
+      box-shadow:0 1px 1px rgba(0,0,0,0.05);
+    }
+    .wa-time{
+      display:block;
+      text-align:right;
+      font-size:10px;
+      color:#7d8a7d;
+      margin-top:3px;
+    }
+    .wa-time .check{color:#34b7f1;letter-spacing:-2px;margin-left:2px}
+    .wa-file{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:#f0f0f0;
+      border-radius:8px;
+      padding:8px 10px;
+    }
+    .wa-file-icon{
+      font-size:22px;
+      flex-shrink:0;
+      width:30px;
+      text-align:center;
+    }
+    .wa-file-name{
+      font-weight:600;
+      font-size:13px;
+      color:#111827;
+      line-height:1.2;
+    }
+    .wa-file-meta{
+      font-size:11px;
+      color:#6b7280;
+      margin-top:2px;
+    }
+
+    /* ============ Deliverables grid ============ */
+    .deliverables-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin:16px 0;
+    }
+    .deliverable{
+      background:#f0fdf4;
+      border:1px solid #bbf7d0;
+      border-radius:12px;
+      padding:14px 12px;
+      text-align:center;
+    }
+    .deliv-icon{font-size:30px;display:block;margin-bottom:6px;line-height:1}
+    .deliv-title{
+      font-size:13px;
+      font-weight:800;
+      color:#14532d;
+      line-height:1.3;
+    }
+    .deliv-sub{
+      font-size:11px;
+      color:#16a34a;
+      margin-top:4px;
+      line-height:1.3;
+    }
+
     /* ============ Offer page specifics ============ */
     .offer-top-cards{
       display:flex;
@@ -817,11 +925,69 @@
         </div>
       </div>
 
-      <!-- MEDIA-PLACEHOLDER: vídeo 90s -->
-      <div class="video-placeholder">
-        <strong>[PLACEHOLDER VÍDEO 90 SEGUNDOS]</strong>
-        Prof. Jaque entrega 1 mini-aula real (40s) +<br>
-        apresenta a oferta (50s)
+      <!-- WhatsApp preview da entrega -->
+      <div class="wa-preview">
+        <div class="wa-header">
+          <div class="wa-avatar">J</div>
+          <div class="wa-meta">
+            <div class="wa-name">Tia Jaque 💚</div>
+            <div class="wa-status">online</div>
+          </div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-msg">
+            Bom dia, mamães! Bem-vindas ao Desafio Bailarina em Casa 🌸
+            <span class="wa-time">08:00 <span class="check">✓✓</span></span>
+          </div>
+          <div class="wa-msg">
+            <div class="wa-file">
+              <span class="wa-file-icon">▶️</span>
+              <div>
+                <div class="wa-file-name">Dia 1 — Aulinha 1 (15 min).mp4</div>
+                <div class="wa-file-meta">24 MB · vídeo</div>
+              </div>
+            </div>
+            <span class="wa-time">08:01 <span class="check">✓✓</span></span>
+          </div>
+          <div class="wa-msg">
+            <div class="wa-file">
+              <span class="wa-file-icon">📄</span>
+              <div>
+                <div class="wa-file-name">Cronograma_7Dias.pdf</div>
+                <div class="wa-file-meta">1,2 MB · PDF</div>
+              </div>
+            </div>
+            <span class="wa-time">08:01 <span class="check">✓✓</span></span>
+          </div>
+          <div class="wa-msg">
+            Bora começar? 💃 É só apertar play e brincar 15 min com a sua filha hoje.
+            <span class="wa-time">08:02 <span class="check">✓✓</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de entregáveis -->
+      <div class="deliverables-grid">
+        <div class="deliverable">
+          <span class="deliv-icon">🎥</span>
+          <div class="deliv-title">7 Aulinhas em vídeo</div>
+          <div class="deliv-sub">15 min por dia</div>
+        </div>
+        <div class="deliverable">
+          <span class="deliv-icon">💬</span>
+          <div class="deliv-title">Grupo VIP no WhatsApp</div>
+          <div class="deliv-sub">com a Prof. Jaque</div>
+        </div>
+        <div class="deliverable">
+          <span class="deliv-icon">📄</span>
+          <div class="deliv-title">Cronograma em PDF</div>
+          <div class="deliv-sub">7 dias guiados</div>
+        </div>
+        <div class="deliverable">
+          <span class="deliv-icon">🎁</span>
+          <div class="deliv-title">Bônus surpresa</div>
+          <div class="deliv-sub">liberado no dia 7</div>
+        </div>
       </div>
 
       <ul class="offer-bullets">
