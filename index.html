@@ -378,6 +378,13 @@
       align-items:center;
       justify-content:center;
       flex-shrink:0;
+      overflow:hidden;
+    }
+    .wa-avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
     .wa-meta .wa-name{font-weight:700;font-size:14px;line-height:1.15}
     .wa-meta .wa-status{font-size:11px;opacity:.85;margin-top:1px}
@@ -928,7 +935,7 @@
       <!-- WhatsApp preview da entrega -->
       <div class="wa-preview">
         <div class="wa-header">
-          <div class="wa-avatar">J</div>
+          <div class="wa-avatar"><img src="img/pfp-jak.jpg" alt="Prof. Jaque" /></div>
           <div class="wa-meta">
             <div class="wa-name">Tia Jaque 💚</div>
             <div class="wa-status">online</div>
